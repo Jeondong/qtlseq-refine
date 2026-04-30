@@ -1,14 +1,8 @@
 """
 Simulation: Peak positional shift due to window start vs center assignment
-논문 주장 검증:
-  "윈도우 값을 start position에 할당하면 피크가 upstream으로 치우치고,
-   center position에 할당하면 true QTL 위치로 수렴한다"
-
-수정 사항 (원본 대비):
-  1. Panel B: downstream bias 예시 → upstream bias 예시로 교체
-  2. Panel D: 제목을 실제 그래프 결과(start가 absolute error 더 낮음)에 맞게 수정
-  3. Panel F: |start signed error| - |center signed error| 로 타입 통일 → 양수 = center가 bias 더 적음
-             y축 레이블 명확화: "(positive = center reduces bias)"
+Validation of the manuscript claim:
+  "Assigning window values to the start position shifts the peak upstream,
+   whereas assigning them to the center position makes the peak converge toward the true QTL position."
 """
 
 import numpy as np
