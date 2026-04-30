@@ -1,12 +1,7 @@
 """
 QTL-seq threshold simulation - clean final version
-논문 핵심 주장: p99 필터는 배경 SNP의 dilution effect를 제거하여
-QTL 신호를 농축시킨다. 이는 작은 윈도우 사용을 가능하게 한다.
-
-3가지 지표:
-  A. Signal enrichment (QTL window mean Δ) - p99가 높을수록 좋음
-  B. Noise level (background window std) - 전체 SNP 기반
-  C. Discriminability (QTL signal / genome-wide std) - 실질 SNR
+Main manuscript claim: the p99 filter removes the dilution effect from background SNPs
+and enriches the QTL signal. This enables the use of smaller sliding windows.
 """
 import numpy as np
 import pandas as pd
