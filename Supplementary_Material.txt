@@ -1,0 +1,13 @@
+Supplementary Material
+
+Supplementary Table S1. Reproduced descriptive percentile-filtering summaries across 600 replicates.
+Supplementary Table S2. Signed and absolute errors under start and center coordinate assignment across 500 replicates.
+Supplementary Table S3. F2 population-model parameters for the 13 conditions.
+Supplementary Table S4. Selected F2 outcomes at 100 kb, with metric-specific denominators.
+Supplementary Table S5. Marker support and global extrema in the existing rice window outputs.
+Supplementary Figure S1. Sensitivity to the minimum number of retained SNPs per window.
+Supplementary Figure S2. Population-model sensitivity across the 13 conditions.
+Supplementary Data S1 and S2. Replicate-level results of the descriptive percentile-filtering and coordinate-assignment experiments, respectively.
+Supplementary Data S3 and S4. Original simulated SNP data files retained with their existing labels.
+Supplementary Data S5. Saved F2 benchmark code, protocol, null thresholds, evaluation data, and verified summaries.
+Supplementary Data S6. Existing rice inputs and window outputs, quantitative summary, and verification script.

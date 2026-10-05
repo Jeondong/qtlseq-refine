@@ -1,5 +1,7 @@
 # Supplementary data index
 
+See [Supplementary Material](../../Supplementary_Material.txt) for the manuscript titles of Tables S1–S5, Figures S1–S2 and Data S1–S6. Data S3/S4 are simulated SNP datasets corresponding to Data S1/S2, respectively.
+
 [Download the complete repository ZIP](https://github.com/Jeondong/qtlseq-refine/archive/refs/heads/main.zip) to obtain all data files and reconstruction scripts.
 
 | Item | File or directory | What it contains |
@@ -8,8 +10,8 @@
 | Data S2 | [Supplementary_Data_S2_peakshift_sim.tsv](Supplementary_Data_S2_peakshift_sim.tsv) | 500 coordinate-assignment experiments; 2,500 result rows |
 | Data S3 | [Supplementary_Data_S3/](Supplementary_Data_S3/) | Raw simulated SNP draws for S1; 7,200,000 SNP records; XZ archive 47.0 MB |
 | Data S4 | [Supplementary_Data_S4/](Supplementary_Data_S4/) | Raw simulated SNP draws for S2; 6,000,000 SNP records; XZ archive 39.2 MB |
-| Data S5 | [Supplementary_Data_S5/](Supplementary_Data_S5/) | F2 protocol, replicate records, thresholds and full/selected summaries |
-| Data S6 | [Supplementary_Data_S6/](Supplementary_Data_S6/) plus [six original Excel files in the parent directory](../) | Rice support/extremum summaries and supported-window records |
+| Data S5 | [Supplementary_Data_S5/](Supplementary_Data_S5/) and [benchmark code](../../scripts/population_benchmark.py) | Saved F2 benchmark code, protocol, null thresholds, evaluation data, and verified summaries |
+| Data S6 | [Supplementary_Data_S6/](Supplementary_Data_S6/), [six original Excel files](../), and [verification script](../../scripts/verify_saved_results.py) | Existing rice inputs and window outputs, quantitative summary, and verification script |
 
 S1/S2/S5 and the S6 summary were relocated from `results/` without changing their contents. S6 additionally includes `empirical_supported_windows.tsv`, a recalculation of all 15 empirical scans with empty windows omitted. Original six Excel files remain unchanged. Source hashes and verification records are in [../../provenance/](../../provenance/).
 

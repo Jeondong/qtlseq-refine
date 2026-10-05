@@ -24,6 +24,8 @@ The verifier reaggregates 364,000 F2 replicate-method records (26,000 evaluation
 
 ## Files and supplementary numbering
 
+The manuscript titles are listed in [Supplementary Material](Supplementary_Material.txt). The [supplementary workbook](tables/Supplementary_Tables.xlsx) uses plain cells with each table title in A1. Table S5 is divided into panels A (marker support) and B (global extrema).
+
 Start at the [data index](data/README.md) or [supplementary data index](data/supplementary/README.md). Saved supplementary results are now grouped under `data/supplementary/`; the eight files moved from `results/` retain their original contents.
 
 | Location | Contents | Supplement |
