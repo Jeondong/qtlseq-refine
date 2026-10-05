@@ -1,0 +1,14 @@
+Condition	Bulk per tail	Read depth	Baseline rate (cM/Mb)	SNPs/Mb	Expected PVE
+baseline	20	40	4.0	100	0.3
+weak_QTL	20	40	4.0	100	0.1
+strong_QTL	20	40	4.0	100	0.6
+small_bulk	10	40	4.0	100	0.3
+large_bulk	50	40	4.0	100	0.3
+low_depth	20	15	4.0	100	0.3
+high_depth	20	80	4.0	100	0.3
+low_recombination	20	40	0.5	100	0.3
+high_recombination	20	40	8.0	100	0.3
+heterogeneous_map	20	40	4.0	100	0.3
+sparse_markers	20	40	4.0	10	0.3
+dense_markers	20	40	4.0	400	0.3
+differential_error	20	40	4.0	100	0.3

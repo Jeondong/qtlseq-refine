@@ -1,262 +1,124 @@
 # qtlseq-refine
 
-**Multi-scale sliding-window refinement of QTL-seq significant ΔSNP-index signals**
+Multi-scale sliding-window summaries of retained ΔSNP-index signals, with descriptive simulations, an F2 population benchmark, and three rice examples.
 
-This repository contains Python scripts and example data associated with the following manuscript:
+Associated manuscript: Jeon D, Shim K-C. *Refining QTL-seq Resolution by Re-analysis of Significant Delta SNP-Index Signals Using High-Resolution Sliding Windows.* (2026).
 
-> Jeon D, Shim K-C. *Refining QTL-seq Resolution by Re-analysis of Significant Delta SNP-Index Signals Using High-Resolution Sliding Windows.* (2026)
+## Revision status
 
----
+The 2026-10-05 update incorporates the September simulation revision and verification of the supplied empirical files. The original six rice Excel files are unchanged. Existing F2 replicate results were reaggregated; no new F2 populations were generated for the reported revision. Previous repository versions remain available in Git history.
 
-## Overview
+Filtering can narrow a plotted or called region while reducing true-position inclusion. A narrower region alone does not establish better localization. The rice examples illustrate retained-marker support and coordinate conventions; they do not independently establish mapping accuracy.
 
-Conventional QTL-seq analysis uses relatively large sliding windows, such as 2 Mb windows with 100 kb increments, to stabilize genome-wide SNP-index and ΔSNP-index estimates. Although this approach is robust for primary QTL detection, it often results in broad candidate intervals that contain many genes.
+## Install and verify
 
-This repository provides scripts and example datasets for re-analyzing statistically significant ΔSNP-index signals using progressively smaller sliding-window parameters. The workflow is designed to refine QTL-seq signals within previously identified QTL regions without requiring additional sequencing or population development.
-
-The repository includes:
-
-1. A multi-scale sliding-window analysis script for empirical QTL-seq datasets
-2. p99-filtered ΔSNP-index input data for three rice QTL-seq datasets:
-
-   * OsABCI8
-   * qHT1 / pri-miR156b/c
-   * OsLESV
-3. Monte Carlo simulation scripts for:
-
-   * evaluating the p99 filtering threshold
-   * verifying positional bias caused by sliding-window coordinate assignment
-
----
-
-## Repository Structure
-
-```text
-qtlseq-refine/
-│
-├── scripts/
-│   ├── sliding_window_analysis.py       # Empirical multi-scale sliding-window analysis
-│   ├── sim_threshold.py                 # Monte Carlo simulation: p99 threshold evaluation
-│   └── peak_shift_sim.py                # Monte Carlo simulation: positional bias verification
-│
-├── data/
-│   ├── abci8_Chr11_p99.xlsx
-│   ├── abci8_Chr11_p99_sliding_window_multi.xlsx
-│   ├── qHT1_Chr1_p99.xlsx
-│   ├── qHT1_Chr1_p99_sliding_window_multi.xlsx
-│   ├── lesv_Chr11_p99.xlsx
-│   └── lesv_Chr11_p99_sliding_window_multi.xlsx
-│
-└── README.md
-```
-
----
-
-## Scripts
-
-### 1. `sliding_window_analysis.py`
-
-Performs multi-scale sliding-window analysis on p99-filtered ΔSNP-index data.
-
-**Input:**
-Excel file containing at least the following two columns:
-
-| Column           | Description                          |
-| ---------------- | ------------------------------------ |
-| `POSITION`       | Genomic position in base pairs       |
-| `delta_SNPindex` | ΔSNP-index value after p99 filtering |
-
-**Output:**
-A multi-sheet Excel file containing sliding-window results for each window scale.
-
-| Sheet name   | Window size  | Increment  |
-| ------------ | ------------ | ---------- |
-| `2Mb_100Kb`  | 2,000,000 bp | 100,000 bp |
-| `1Mb_50Kb`   | 1,000,000 bp | 50,000 bp  |
-| `0.5Mb_10Kb` | 500,000 bp   | 10,000 bp  |
-| `0.1Mb_5Kb`  | 100,000 bp   | 5,000 bp   |
-| `0.01Mb_5Kb` | 10,000 bp    | 5,000 bp   |
-
-**Output columns:**
-
-| Column       | Description                             |
-| ------------ | --------------------------------------- |
-| `chrom`      | Chromosome name                         |
-| `start`      | Window start position in base pairs     |
-| `end`        | Window end position in base pairs       |
-| `mid`        | Window midpoint in base pairs           |
-| `value_mean` | Mean ΔSNP-index value within the window |
-| `count`      | Number of SNPs included in the window   |
-
-**Usage:**
+Use Python 3.10 or later and run commands from the repository root:
 
 ```bash
-python scripts/sliding_window_analysis.py
+python -m pip install -r requirements.txt
+python -m unittest discover -s tests -v
+python scripts/verify_saved_results.py
 ```
 
-Before running the script, edit the following variables inside `sliding_window_analysis.py` according to the target dataset:
+The verifier reaggregates 364,000 F2 replicate-method records (26,000 evaluation populations), checks 1,274 summary values, and recalculates 16,875 supported empirical windows across 15 settings. It writes a report under `outputs/verification/`. The additional 26,000 null calibration populations are documented by the saved protocol; their individual draws were not retained. See `provenance/` for file hashes and validation results.
 
-```python
-input_excel
-chrom_name
-output_excel
-```
+## Files and supplementary numbering
 
----
+| Location | Contents | Supplement |
+| --- | --- | --- |
+| `results/descriptive/Supplementary_Data_S1_threshold_sim.tsv` | 600 observed-percentile experiments, seed 42; 5,400 rows | Data S1 |
+| `results/descriptive/Supplementary_Data_S2_peakshift_sim.tsv` | 500 coordinate experiments, seed 2025; 2,500 rows | Data S2 |
+| Generated with `--raw-snps` below | Raw simulated SNP draws corresponding to S1 and S2 | Data S3 and S4 |
+| `results/f2/` | F2 protocol, thresholds, replicate records, full and selected summaries | Data S5 |
+| `data/` and `results/empirical/` | Six original rice Excel files and verified summaries | Data S6 |
+| `tables/Supplementary_Tables.xlsx` and `tables/*.tsv` | Tables S1, S2, S3, S4, S5A and S5B | Tables S1–S5 |
+| `figures/` | Revised PNG/SVG exports for Figures 1, 3, 4, 8, S1 and S2 | See below |
 
-### 2. `sim_threshold.py`
+**Figure S1 is marker support; Figure S2 is population sensitivity.** The former `Figure_9_population_sensitivity` is now Figure S2. Publication exports retain their author-edited layout; the plotting script reproduces the reported quantities with potentially different typography/layout. Figures 5–7 are not regenerated here.
 
-Performs Monte Carlo simulations comparing three SNP filtering strategies:
+Large raw Data S3/S4 gzip files remain in the manuscript submission package rather than being duplicated in Git. They are reproducible below and contain simulated SNPs, not raw sequencing reads or unfiltered empirical SNPs. “Table S5” and “Data S5” denote different supplementary items.
 
-* all SNPs
-* p95-filtered SNPs
-* p99-filtered SNPs
-
-The simulation evaluates QTL signal enrichment, genome-wide noise, and signal discriminability across multiple sliding-window scales.
-
-**Outputs:**
-
-| Output file                         | Description                                       |
-| ----------------------------------- | ------------------------------------------------- |
-| `fig_main.png` / `fig_main.svg`     | 3 × 3 boxplot panel used for threshold comparison |
-| `fig_traces.png` / `fig_traces.svg` | Representative 100 kb sliding-window profiles     |
-| `table_threshold_clean.tsv`         | Summary statistics table                          |
-
-**Key parameters:**
-
-| Parameter        | Default | Description                                   |
-| ---------------- | ------- | --------------------------------------------- |
-| `CHROM_MB`       | 30      | Simulated chromosome length in Mb             |
-| `QTL_POS_MB`     | 15.0    | True QTL position in Mb                       |
-| `TOTAL_SNPS`     | 12,000  | Total number of SNPs per simulated chromosome |
-| `QTL_MEAN`       | 0.72    | Mean ΔSNP-index value for QTL-linked SNPs     |
-| `N_SIM`          | 600     | Number of Monte Carlo iterations              |
-| `np.random.seed` | 42      | Random seed for reproducibility               |
-
-**Usage:**
+## Descriptive simulations and figures
 
 ```bash
-python scripts/sim_threshold.py
+python scripts/sim_threshold.py --output-dir outputs/descriptive
+python scripts/peak_shift_sim.py --output-dir outputs/descriptive
+python scripts/plot_revision_figures.py --output-dir outputs/figures
 ```
 
----
-
-### 3. `peak_shift_sim.py`
-
-Performs Monte Carlo simulations to evaluate positional bias caused by sliding-window coordinate assignment.
-
-This script compares two coordinate-assignment methods:
-
-1. **Start-position assignment**: the window value is plotted at the left boundary of the window.
-2. **Center-position assignment**: the window value is plotted at the midpoint of the window.
-
-The simulation tests whether the apparent downstream shift of ΔSNP-index peaks during progressive window-size reduction can be explained by coordinate assignment rather than biological displacement of the QTL signal.
-
-**Outputs:**
-
-| Output file                             | Description                                           |
-| --------------------------------------- | ----------------------------------------------------- |
-| `fig_N3_final.png` / `fig_N3_final.svg` | Six-panel figure summarizing positional bias analysis |
-| Console summary table                   | Median positional bias by window scale                |
-
-**Key parameters:**
-
-| Parameter         | Default                      | Description                                   |
-| ----------------- | ---------------------------- | --------------------------------------------- |
-| `WINDOW_SIZES_MB` | `[2.0, 1.0, 0.5, 0.1, 0.01]` | Window sizes tested in Mb                     |
-| `INCREMENT_RATIO` | 0.05                         | Increment size as a proportion of window size |
-| `N_SIM`           | 500                          | Number of Monte Carlo iterations              |
-| `np.random.seed`  | 2025                         | Random seed for reproducibility               |
-
-**Usage:**
+To also regenerate raw simulated SNP draws:
 
 ```bash
-python scripts/peak_shift_sim.py
+python scripts/sim_threshold.py --raw-snps --output-dir outputs/descriptive
+python scripts/peak_shift_sim.py --raw-snps --output-dir outputs/descriptive
 ```
 
----
+Default seeds and replicate counts reproduce saved Data S1/S2 metrics. Gzip metadata and floating-point text formatting may differ. Raw exports round positions to one decimal place and ΔSNP-index to six decimal places, matching the submission format; use the seeded generator for full-precision metric reproduction.
 
-## Data Files
+These experiments draw 12,000 SNPs over a 30 Mb chromosome with a signal centered at 15 Mb. Observed p95/p99 are percentiles of absolute values in each simulated chromosome, **not null-model significance thresholds**. Windows require two retained SNPs. Empirical and F2 support rules differ, as specified below.
 
-All empirical example data files are located in the `data/` directory. Input files contain p99-filtered ΔSNP-index values extracted from primary QTL-seq analysis. Output files contain multi-scale sliding-window results generated from the corresponding input files.
+Data S1 retains legacy column names:
 
-| File                                        | Dataset              | Chromosome | Type                               |
-| ------------------------------------------- | -------------------- | ---------- | ---------------------------------- |
-| `abci8_Chr11_p99.xlsx`                      | OsABCI8              | Chr11      | Raw p99-filtered ΔSNP-index SNPs   |
-| `abci8_Chr11_p99_sliding_window_multi.xlsx` | OsABCI8              | Chr11      | Multi-scale sliding-window results |
-| `qHT1_Chr1_p99.xlsx`                        | qHT1 / pri-miR156b/c | Chr1       | Raw p99-filtered ΔSNP-index SNPs   |
-| `qHT1_Chr1_p99_sliding_window_multi.xlsx`   | qHT1 / pri-miR156b/c | Chr1       | Multi-scale sliding-window results |
-| `lesv_Chr11_p99.xlsx`                       | OsLESV               | Chr11      | Raw p99-filtered ΔSNP-index SNPs   |
-| `lesv_Chr11_p99_sliding_window_multi.xlsx`  | OsLESV               | Chr11      | Multi-scale sliding-window results |
+- `qtl_signal`: mean of retained window means with midpoints within 2.5 Mb of 15 Mb.
+- `gw_noise`: population SD of all retained window means, including signal-bearing windows.
+- `discriminability`: signal-region mean divided by that SD; not an independent background-noise or localization metric.
+- `peak_err`: midpoint error in Mb. `fwhm`: span between the outermost half-height window midpoints, including gaps; not a confidence interval.
+- `detected`: peak error at most 2.5 Mb in this descriptive model.
 
----
+In Data S2, midpoint assignment adds exactly half a window width to the start coordinate. This changes directional bias but leaves the spread of signed errors unchanged. Reduction in absolute median signed error and reduction in median absolute error are distinct statistics; Table S2 reports both. Figure 8 uses the first seed-2025 example, including its downstream 100 kb start-coordinate peak.
 
-## Input File Format
-
-The empirical input files named `*_p99.xlsx` contain p99-filtered ΔSNP-index values.
-
-| Column           | Description                          |
-| ---------------- | ------------------------------------ |
-| `POSITION`       | Genomic position in base pairs       |
-| `delta_SNPindex` | ΔSNP-index value after p99 filtering |
-
----
-
-## Sliding-Window Output Format
-
-The files named `*_sliding_window*.xlsx` contain sliding-window summary statistics.
-
-| Column       | Description                             |
-| ------------ | --------------------------------------- |
-| `chrom`      | Chromosome name                         |
-| `start`      | Window start position in base pairs     |
-| `end`        | Window end position in base pairs       |
-| `mid`        | Window midpoint in base pairs           |
-| `value_mean` | Mean ΔSNP-index value within the window |
-| `count`      | Number of SNPs included in the window   |
-
----
-
-## Requirements
-
-```text
-python >= 3.8
-numpy
-pandas
-matplotlib
-openpyxl
-xlsxwriter
-```
-
-Install dependencies using:
+## Empirical rice scans
 
 ```bash
-pip install numpy pandas matplotlib openpyxl xlsxwriter
+python scripts/sliding_window_analysis.py --input data/abci8_Chr11_p99.xlsx --chrom Chr11 --output-dir outputs/OsABCI8
+python scripts/sliding_window_analysis.py --input data/qHT1_Chr1_p99.xlsx --chrom Chr1 --output-dir outputs/qHT1
+python scripts/sliding_window_analysis.py --input data/lesv_Chr11_p99.xlsx --chrom Chr11 --output-dir outputs/OsLESV
 ```
 
----
+The first two columns supply position in bp and retained ΔSNP-index. The same supplied input is scanned independently at each setting:
 
-## Reproducibility
+| Window | Step | Output stem |
+| --- | --- | --- |
+| 2 Mb | 100 kb | `2Mb_100Kb` |
+| 1 Mb | 50 kb | `1Mb_50Kb` |
+| 500 kb | 10 kb | `0.5Mb_10Kb` |
+| 100 kb | 5 kb | `0.1Mb_5Kb` |
+| 10 kb | 5 kb | `0.01Mb_5Kb` |
 
-The simulation scripts use fixed random seeds to ensure reproducibility.
+Each TSV contains `chrom`, `start`, `end`, `mid`, `value_mean`, and `count`. Windows are half-open `[start, end)` and `mid = start + width/2`. The default requires one retained SNP (`--min-snps 1`); unsupported windows are omitted. Original Excel outputs sometimes encode empty windows as mean zero; verification excludes `count=0` rows.
 
-| Script              | Random seed |
-| ------------------- | ----------- |
-| `sim_threshold.py`  | 42          |
-| `peak_shift_sim.py` | 2025        |
+Filenames preserve the original `p99` labels. The retained inputs do not include all upstream data/code needed to independently reconstruct selection. This scan is not an automated iterative interval-selection algorithm.
 
-Empirical sliding-window analysis can be reproduced by running `sliding_window_analysis.py` on each p99-filtered input file in the `data/` directory.
+Inputs contain 24,443 SNPs for OsABCI8, 12,068 for qHT1, and 103 for OsLESV. At 10 kb, median support is 14, 24 and 1 SNPs; single-SNP windows comprise 12.45%, 4.84% and 97.5% of supported windows. Small windows can expose sparse support rather than add mapping information.
 
----
+Table S5B selects the global minimum over supplied OsABCI8/qHT1 inputs and global maximum over OsLESV, taking the earliest start in an exact tie. Extrema are selected before referring to gene coordinates and can differ from local arrows in Figures 5–7. Distance is to the nearest locus boundary (zero inside); both start and midpoint distances are reported. The original empirical plotting convention still requires author confirmation.
 
-## Citation
+## F2 population benchmark
 
-If you use these scripts or data, please cite:
+Seed 20260914 is used for 13 controlled conditions, each with 2,000 null calibration, 1,000 independent null-test and 1,000 QTL-test populations (52,000 overall). The single-QTL F2 model uses 400 individuals and varies bulk size, depth, marker density, recombination map, effect size and error. These are sensitivity scenarios, not estimates fitted to rice data. Settings and limitations are in `results/f2/benchmark_protocol.json`.
 
-> Jeon D, Shim K-C. *Refining QTL-seq Resolution by Re-analysis of Significant Delta SNP-Index Signals Using High-Resolution Sliding Windows.* (2026)
+Here p95/p99 are bulk-aware **null** cutoffs for individual absolute ΔSNP-index values. Window detection uses a separate held-out chromosome-maximum null threshold at nominal alpha 0.05, with strict exceedance. This concerns one chromosome, not genome-wide error. ALL/p95/p99 require ten retained SNPs; `p99_n1` is a one-SNP sensitivity analysis. Suffixes 2000/500/100 kb denote window width. The marker-fraction comparator uses the same p99 cutoff and is not PyBSASeq. The full summary preserves a reimplemented G-statistic comparator; no official comparator package execution is claimed.
 
----
+Record and summary definitions:
 
-## License
+- `stage` is `null` or `qtl`; `replicate` is paired across methods within scenario/stage.
+- `detected`: a finite window strictly exceeds its threshold. `covered`: the true coordinate falls in the union of exceeding windows.
+- `total_width_mb`: union length of complete exceeding windows; zero for nondetections. This is not a location confidence interval.
+- `peak_error_mb`: midpoint error of the maximum finite score, including nondetections; ties within 1e-10 select the earliest window. Missing values mean no finite peak.
+- Inclusion and no-finite-peak rates use all QTL tests; null detection uses all null tests. Median called width is conditional on detection; median peak error is conditional on a finite peak. Medians may use different populations.
 
-MIT License
+At 100 kb, the ten-SNP p99 calibration threshold is negative infinity in 12/13 conditions because null profiles usually lack supported windows. Any finite test profile then exceeds that cutoff. This and differing realized null detection rates matter for comparisons.
+
+At baseline 100 kb, ALL → p99 reduces median called width from 16.080 to 8.730 Mb, while median peak error stays 0.295 Mb and inclusion changes from 100.0% to 98.4%. Under weak effects, inclusion changes from 77.2% to 26.0%. This supports a conditional width/inclusion trade-off, not a universal accuracy gain.
+
+Generate a complete new benchmark with:
+
+```bash
+python scripts/population_benchmark.py --n 1000 --n-cal 2000 --scenario all --output-dir outputs/f2_new --skip-plots
+```
+
+This is substantially more expensive than verification. Choose a new output directory for each run. Numerical model functions are retained from the source benchmark; this revision makes paths and command-line use portable. Saved records remain the source for manuscript tables and supplement figures.
+
+## Citation and license
+
+Please cite the manuscript above. The repository's stated license is MIT License.

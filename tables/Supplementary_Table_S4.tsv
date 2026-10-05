@@ -1,0 +1,9 @@
+Condition	Rule	Inclusion (%)	Median called width (Mb)	Median peak error (Mb)	Null detection (%)
+baseline	ALL	100.0	16.08	0.295	4.9
+baseline	p99	98.4	8.73	0.295	0.1
+weak_QTL	ALL	77.2	6.595	0.735	6.1
+weak_QTL	p99	26.0	1.03	0.605	0.0
+low_depth	ALL	100.0	14.45	0.375	7.7
+low_depth	p99	56.599999999999994	1.86	0.385	0.0
+dense_markers	ALL	100.0	16.925	0.23625	4.9
+dense_markers	p99	100.0	15.42	0.2275	4.8

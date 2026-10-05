@@ -1,0 +1,197 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1680" height="780" viewBox="0 0 1680 780"><rect width="1680" height="780" fill="white"/>
+<rect x="8" y="8" width="548" height="764" rx="12" fill="white" stroke="#89939d"/>
+<rect x="9" y="9" width="546" height="78" rx="10" fill="#daeafa" stroke="none"/>
+<text x="282" y="59" text-anchor="middle" font-family="Arial, sans-serif" font-size="29" font-weight="700" fill="#111">1  Select input SNPs</text>
+<rect x="564" y="8" width="548" height="764" rx="12" fill="white" stroke="#89939d"/>
+<rect x="565" y="9" width="546" height="78" rx="10" fill="#def0e8" stroke="none"/>
+<text x="838" y="59" text-anchor="middle" font-family="Arial, sans-serif" font-size="29" font-weight="700" fill="#111">2  Summarize windows</text>
+<rect x="1120" y="8" width="548" height="764" rx="12" fill="white" stroke="#89939d"/>
+<rect x="1121" y="9" width="546" height="78" rx="10" fill="#f4dfe8" stroke="none"/>
+<text x="1394" y="59" text-anchor="middle" font-family="Arial, sans-serif" font-size="29" font-weight="700" fill="#111">3  Compare scales</text>
+<text x="282" y="143" text-anchor="middle" font-family="Arial, sans-serif" font-size="25" font-weight="400" fill="#111">Calculate ΔSNP-index</text>
+<text x="282" y="180" text-anchor="middle" font-family="Arial, sans-serif" font-size="25" font-weight="400" fill="#111">from contrasting bulks</text>
+<line x1="282" y1="204" x2="282" y2="243" stroke="#555" stroke-width="2" />
+<path d="M 275 233 L 282 247 L 289 233" fill="none" stroke="#555" stroke-width="2"/>
+<text x="282" y="285" text-anchor="middle" font-family="Arial, sans-serif" font-size="25" font-weight="400" fill="#111">Retain SNPs outside the</text>
+<text x="282" y="322" text-anchor="middle" font-family="Arial, sans-serif" font-size="25" font-weight="400" fill="#111">null-based 99% interval</text>
+<line x1="100" y1="376" x2="100" y2="624" stroke="#555" stroke-width="2" />
+<line x1="100" y1="624" x2="511" y2="624" stroke="#555" stroke-width="2" />
+<circle cx="100.00" cy="496.65" r="3.2" fill="#777"/>
+<circle cx="103.10" cy="509.25" r="3.2" fill="#777"/>
+<circle cx="106.20" cy="507.31" r="3.2" fill="#777"/>
+<circle cx="109.30" cy="543.21" r="3.2" fill="#777"/>
+<circle cx="112.40" cy="468.15" r="3.2" fill="#777"/>
+<circle cx="115.50" cy="479.75" r="3.2" fill="#777"/>
+<circle cx="118.60" cy="505.76" r="3.2" fill="#777"/>
+<circle cx="121.71" cy="486.30" r="3.2" fill="#777"/>
+<circle cx="124.81" cy="495.02" r="3.2" fill="#777"/>
+<circle cx="127.91" cy="509.80" r="3.2" fill="#777"/>
+<circle cx="131.01" cy="482.70" r="3.2" fill="#777"/>
+<circle cx="134.11" cy="505.50" r="3.2" fill="#777"/>
+<circle cx="137.21" cy="505.82" r="3.2" fill="#777"/>
+<circle cx="140.31" cy="514.02" r="3.2" fill="#777"/>
+<circle cx="143.41" cy="491.95" r="3.2" fill="#777"/>
+<circle cx="146.51" cy="501.76" r="3.2" fill="#777"/>
+<circle cx="149.61" cy="490.35" r="3.2" fill="#777"/>
+<circle cx="152.71" cy="510.75" r="3.2" fill="#777"/>
+<circle cx="155.81" cy="497.76" r="3.2" fill="#777"/>
+<circle cx="158.91" cy="515.79" r="3.2" fill="#777"/>
+<circle cx="162.02" cy="485.11" r="3.2" fill="#777"/>
+<circle cx="165.12" cy="496.67" r="3.2" fill="#777"/>
+<circle cx="168.22" cy="494.15" r="3.2" fill="#777"/>
+<circle cx="171.32" cy="492.73" r="3.2" fill="#777"/>
+<circle cx="174.42" cy="517.89" r="3.2" fill="#777"/>
+<circle cx="177.52" cy="486.14" r="3.2" fill="#777"/>
+<circle cx="180.62" cy="463.60" r="3.2" fill="#777"/>
+<circle cx="183.72" cy="529.00" r="3.2" fill="#777"/>
+<circle cx="186.82" cy="530.61" r="3.2" fill="#777"/>
+<circle cx="189.92" cy="526.64" r="3.2" fill="#777"/>
+<circle cx="193.02" cy="485.11" r="3.2" fill="#777"/>
+<circle cx="196.12" cy="497.72" r="3.2" fill="#777"/>
+<circle cx="199.22" cy="480.91" r="3.2" fill="#777"/>
+<circle cx="202.33" cy="487.21" r="3.2" fill="#777"/>
+<circle cx="205.43" cy="496.27" r="3.2" fill="#777"/>
+<circle cx="208.53" cy="494.97" r="3.2" fill="#777"/>
+<circle cx="211.63" cy="503.00" r="3.2" fill="#777"/>
+<circle cx="214.73" cy="484.63" r="3.2" fill="#777"/>
+<circle cx="217.83" cy="520.00" r="3.2" fill="#777"/>
+<circle cx="220.93" cy="507.47" r="3.2" fill="#777"/>
+<circle cx="224.03" cy="495.70" r="3.2" fill="#777"/>
+<circle cx="227.13" cy="468.11" r="3.2" fill="#777"/>
+<circle cx="230.23" cy="513.53" r="3.2" fill="#777"/>
+<circle cx="233.33" cy="519.10" r="3.2" fill="#777"/>
+<circle cx="236.43" cy="509.97" r="3.2" fill="#777"/>
+<circle cx="239.53" cy="482.84" r="3.2" fill="#777"/>
+<circle cx="242.64" cy="504.16" r="3.2" fill="#777"/>
+<circle cx="245.74" cy="476.56" r="3.2" fill="#777"/>
+<circle cx="248.84" cy="533.14" r="3.2" fill="#777"/>
+<circle cx="251.94" cy="480.03" r="3.2" fill="#777"/>
+<circle cx="255.04" cy="481.68" r="3.2" fill="#777"/>
+<circle cx="258.14" cy="525.11" r="3.2" fill="#777"/>
+<circle cx="261.24" cy="497.28" r="3.2" fill="#777"/>
+<circle cx="264.34" cy="478.48" r="3.2" fill="#777"/>
+<circle cx="267.44" cy="498.44" r="3.2" fill="#777"/>
+<circle cx="270.54" cy="556.65" r="3.2" fill="#d94329"/>
+<circle cx="273.64" cy="383.62" r="3.2" fill="#d94329"/>
+<circle cx="276.74" cy="420.81" r="3.2" fill="#d94329"/>
+<circle cx="279.84" cy="430.62" r="3.2" fill="#d94329"/>
+<circle cx="282.95" cy="587.99" r="3.2" fill="#d94329"/>
+<circle cx="286.05" cy="414.19" r="3.2" fill="#d94329"/>
+<circle cx="289.15" cy="429.14" r="3.2" fill="#d94329"/>
+<circle cx="292.25" cy="577.50" r="3.2" fill="#d94329"/>
+<circle cx="295.35" cy="576.20" r="3.2" fill="#d94329"/>
+<circle cx="298.45" cy="414.16" r="3.2" fill="#d94329"/>
+<circle cx="301.55" cy="444.53" r="3.2" fill="#d94329"/>
+<circle cx="304.65" cy="601.42" r="3.2" fill="#d94329"/>
+<circle cx="307.75" cy="468.74" r="3.2" fill="#777"/>
+<circle cx="310.85" cy="553.12" r="3.2" fill="#d94329"/>
+<circle cx="313.95" cy="424.35" r="3.2" fill="#d94329"/>
+<circle cx="317.05" cy="547.61" r="3.2" fill="#d94329"/>
+<circle cx="320.16" cy="574.50" r="3.2" fill="#d94329"/>
+<circle cx="323.26" cy="438.80" r="3.2" fill="#d94329"/>
+<circle cx="326.36" cy="417.20" r="3.2" fill="#d94329"/>
+<circle cx="329.46" cy="427.02" r="3.2" fill="#d94329"/>
+<circle cx="332.56" cy="522.20" r="3.2" fill="#777"/>
+<circle cx="335.66" cy="515.67" r="3.2" fill="#777"/>
+<circle cx="338.76" cy="468.73" r="3.2" fill="#777"/>
+<circle cx="341.86" cy="493.73" r="3.2" fill="#777"/>
+<circle cx="344.96" cy="492.63" r="3.2" fill="#777"/>
+<circle cx="348.06" cy="504.89" r="3.2" fill="#777"/>
+<circle cx="351.16" cy="512.21" r="3.2" fill="#777"/>
+<circle cx="354.26" cy="484.22" r="3.2" fill="#777"/>
+<circle cx="357.36" cy="501.85" r="3.2" fill="#777"/>
+<circle cx="360.47" cy="513.44" r="3.2" fill="#777"/>
+<circle cx="363.57" cy="502.37" r="3.2" fill="#777"/>
+<circle cx="366.67" cy="516.03" r="3.2" fill="#777"/>
+<circle cx="369.77" cy="496.64" r="3.2" fill="#777"/>
+<circle cx="372.87" cy="480.01" r="3.2" fill="#777"/>
+<circle cx="375.97" cy="514.80" r="3.2" fill="#777"/>
+<circle cx="379.07" cy="474.71" r="3.2" fill="#777"/>
+<circle cx="382.17" cy="511.82" r="3.2" fill="#777"/>
+<circle cx="385.27" cy="497.28" r="3.2" fill="#777"/>
+<circle cx="388.37" cy="514.80" r="3.2" fill="#777"/>
+<circle cx="391.47" cy="503.93" r="3.2" fill="#777"/>
+<circle cx="394.57" cy="499.16" r="3.2" fill="#777"/>
+<circle cx="397.67" cy="507.69" r="3.2" fill="#777"/>
+<circle cx="400.78" cy="512.44" r="3.2" fill="#777"/>
+<circle cx="403.88" cy="512.00" r="3.2" fill="#777"/>
+<circle cx="406.98" cy="514.53" r="3.2" fill="#777"/>
+<circle cx="410.08" cy="527.79" r="3.2" fill="#777"/>
+<circle cx="413.18" cy="504.65" r="3.2" fill="#777"/>
+<circle cx="416.28" cy="492.90" r="3.2" fill="#777"/>
+<circle cx="419.38" cy="483.92" r="3.2" fill="#777"/>
+<circle cx="422.48" cy="488.55" r="3.2" fill="#777"/>
+<circle cx="425.58" cy="456.51" r="3.2" fill="#777"/>
+<circle cx="428.68" cy="494.36" r="3.2" fill="#777"/>
+<circle cx="431.78" cy="508.08" r="3.2" fill="#777"/>
+<circle cx="434.88" cy="466.87" r="3.2" fill="#777"/>
+<circle cx="437.98" cy="518.54" r="3.2" fill="#777"/>
+<circle cx="441.09" cy="482.86" r="3.2" fill="#777"/>
+<circle cx="444.19" cy="516.91" r="3.2" fill="#777"/>
+<circle cx="447.29" cy="493.73" r="3.2" fill="#777"/>
+<circle cx="450.39" cy="534.84" r="3.2" fill="#777"/>
+<circle cx="453.49" cy="484.08" r="3.2" fill="#777"/>
+<circle cx="456.59" cy="502.80" r="3.2" fill="#777"/>
+<circle cx="459.69" cy="517.13" r="3.2" fill="#777"/>
+<circle cx="462.79" cy="470.29" r="3.2" fill="#777"/>
+<circle cx="465.89" cy="486.45" r="3.2" fill="#777"/>
+<circle cx="468.99" cy="499.19" r="3.2" fill="#777"/>
+<circle cx="472.09" cy="513.19" r="3.2" fill="#777"/>
+<circle cx="475.19" cy="500.77" r="3.2" fill="#777"/>
+<circle cx="478.29" cy="502.90" r="3.2" fill="#777"/>
+<circle cx="481.40" cy="487.17" r="3.2" fill="#777"/>
+<circle cx="484.50" cy="485.87" r="3.2" fill="#777"/>
+<circle cx="487.60" cy="511.82" r="3.2" fill="#777"/>
+<circle cx="490.70" cy="509.72" r="3.2" fill="#777"/>
+<circle cx="493.80" cy="509.42" r="3.2" fill="#777"/>
+<circle cx="496.90" cy="523.88" r="3.2" fill="#777"/>
+<circle cx="500.00" cy="510.47" r="3.2" fill="#777"/>
+<line x1="100" y1="453" x2="505" y2="453" stroke="#d94329" stroke-width="2" stroke-dasharray="7 5"/>
+<line x1="100" y1="547" x2="505" y2="547" stroke="#d94329" stroke-width="2" stroke-dasharray="7 5"/>
+<text x="100" y="650" text-anchor="middle" font-family="Arial, sans-serif" font-size="19" font-weight="400" fill="#111">0</text>
+<text x="300" y="650" text-anchor="middle" font-family="Arial, sans-serif" font-size="19" font-weight="400" fill="#111">15</text>
+<text x="500" y="650" text-anchor="middle" font-family="Arial, sans-serif" font-size="19" font-weight="400" fill="#111">30</text>
+<text x="85" y="386" text-anchor="end" font-family="Arial, sans-serif" font-size="19" font-weight="400" fill="#111">1</text>
+<text x="85" y="504" text-anchor="end" font-family="Arial, sans-serif" font-size="19" font-weight="400" fill="#111">0</text>
+<text x="85" y="622" text-anchor="end" font-family="Arial, sans-serif" font-size="19" font-weight="400" fill="#111">−1</text>
+<text x="301" y="682" text-anchor="middle" font-family="Arial, sans-serif" font-size="22" font-weight="400" fill="#111">Position (Mb)</text>
+<text x="42" y="512" transform="rotate(-90 42 512)" text-anchor="middle" font-family="Arial" font-size="22">ΔSNP-index</text>
+<text x="282" y="721" text-anchor="middle" font-family="Arial, sans-serif" font-size="20" font-weight="400" fill="#444">Schematic only</text>
+<text x="282" y="750" text-anchor="middle" font-family="Arial, sans-serif" font-size="20" font-weight="400" fill="#444">Thresholds depend on the null model</text>
+<text x="838" y="148" text-anchor="middle" font-family="Arial, sans-serif" font-size="24" font-weight="400" fill="#111">For each window [start, end):</text>
+<line x1="620" y1="269" x2="1070" y2="269" stroke="#555" stroke-width="2" />
+<rect x="727" y="225" width="235" height="88" rx="0" fill="#d9ebfc" stroke="#185aaa"/>
+<circle cx="648" cy="269" r="5" fill="#d94329"/>
+<circle cx="690" cy="269" r="5" fill="#d94329"/>
+<circle cx="759" cy="269" r="5" fill="#d94329"/>
+<circle cx="812" cy="269" r="5" fill="#d94329"/>
+<circle cx="846" cy="269" r="5" fill="#d94329"/>
+<circle cx="935" cy="269" r="5" fill="#d94329"/>
+<circle cx="993" cy="269" r="5" fill="#d94329"/>
+<circle cx="1035" cy="269" r="5" fill="#d94329"/>
+<line x1="844" y1="225" x2="844" y2="313" stroke="#185aaa" stroke-width="2" stroke-dasharray="7 5"/>
+<text x="727" y="343" text-anchor="middle" font-family="Arial, sans-serif" font-size="20" font-weight="400" fill="#111">start</text>
+<text x="844" y="343" text-anchor="middle" font-family="Arial, sans-serif" font-size="20" font-weight="400" fill="#111">midpoint</text>
+<text x="962" y="343" text-anchor="middle" font-family="Arial, sans-serif" font-size="20" font-weight="400" fill="#111">end</text>
+<text x="838" y="417" text-anchor="middle" font-family="Arial, sans-serif" font-size="25" font-weight="400" fill="#111">Mean ΔSNP-index</text>
+<text x="838" y="459" text-anchor="middle" font-family="Arial, sans-serif" font-size="25" font-weight="400" fill="#111">Number of retained SNPs</text>
+<text x="599" y="547" text-anchor="start" font-family="Arial, sans-serif" font-size="25" font-weight="700" fill="#111">Minimum retained SNPs</text>
+<text x="599" y="592" text-anchor="start" font-family="Arial, sans-serif" font-size="25" font-weight="400" fill="#111">Rice reanalysis: 1</text>
+<text x="599" y="637" text-anchor="start" font-family="Arial, sans-serif" font-size="25" font-weight="400" fill="#111">Descriptive simulations: 2</text>
+<text x="599" y="682" text-anchor="start" font-family="Arial, sans-serif" font-size="25" font-weight="400" fill="#111">F2 benchmark: 10</text>
+<text x="599" y="727" text-anchor="start" font-family="Arial, sans-serif" font-size="25" font-weight="400" fill="#111">F2 support sensitivity: 1</text>
+<text x="1394" y="143" text-anchor="middle" font-family="Arial, sans-serif" font-size="24" font-weight="400" fill="#111">Same retained input scanned</text>
+<text x="1394" y="180" text-anchor="middle" font-family="Arial, sans-serif" font-size="24" font-weight="400" fill="#111">independently at each scale</text>
+<rect x="1190" y="214" width="408" height="66" rx="9" fill="#f4f7fa" stroke="#c0c8cf"/>
+<text x="1394" y="259" text-anchor="middle" font-family="Arial, sans-serif" font-size="29" font-weight="400" fill="#111">2 Mb / 100 kb</text>
+<rect x="1190" y="304" width="408" height="66" rx="9" fill="#f4f7fa" stroke="#c0c8cf"/>
+<text x="1394" y="349" text-anchor="middle" font-family="Arial, sans-serif" font-size="29" font-weight="400" fill="#111">1 Mb / 50 kb</text>
+<rect x="1190" y="394" width="408" height="66" rx="9" fill="#f4f7fa" stroke="#c0c8cf"/>
+<text x="1394" y="439" text-anchor="middle" font-family="Arial, sans-serif" font-size="29" font-weight="400" fill="#111">0.5 Mb / 10 kb</text>
+<rect x="1190" y="484" width="408" height="66" rx="9" fill="#f4f7fa" stroke="#c0c8cf"/>
+<text x="1394" y="529" text-anchor="middle" font-family="Arial, sans-serif" font-size="29" font-weight="400" fill="#111">0.1 Mb / 5 kb</text>
+<rect x="1190" y="574" width="408" height="66" rx="9" fill="#f4f7fa" stroke="#c0c8cf"/>
+<text x="1394" y="619" text-anchor="middle" font-family="Arial, sans-serif" font-size="29" font-weight="400" fill="#111">0.01 Mb / 5 kb</text>
+<text x="1394" y="710" text-anchor="middle" font-family="Arial, sans-serif" font-size="24" font-weight="400" fill="#111">Inspect means, SNP counts,</text>
+<text x="1394" y="748" text-anchor="middle" font-family="Arial, sans-serif" font-size="24" font-weight="400" fill="#111">and coordinate sensitivity</text>
+</svg>

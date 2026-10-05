@@ -1,0 +1,19 @@
+{
+  "replicate_method_rows": 364000,
+  "evaluation_populations": 26000,
+  "calibration_populations": 26000,
+  "summary_values_verified": 1274,
+  "new_f2_populations_generated": 0,
+  "empirical_supported_windows_verified": 16875,
+  "empirical_settings_verified": 15,
+  "empirical_summary_matches": true,
+  "data_s1_reproduced_rows": 5400,
+  "data_s2_reproduced_rows": 2500,
+  "supplementary_cells_verified": 410,
+  "table_s2_cached_formulas_verified": 10,
+  "unit_tests_passed": 4,
+  "python": "3.12.14",
+  "numpy": "2.3.5",
+  "pandas": "3.0.1",
+  "validation_date": "2026-10-05"
+}

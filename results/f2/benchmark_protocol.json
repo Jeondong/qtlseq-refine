@@ -1,0 +1,165 @@
+{
+  "seed": 20260914,
+  "n_calibration": 2000,
+  "n_null_test": 1000,
+  "n_qtl_test": 1000,
+  "alpha": 0.05,
+  "length_bp": 30000000,
+  "minimum_markers": 10,
+  "configs": {
+    "baseline": {
+      "N": 400,
+      "bulk": 20,
+      "depth": 40,
+      "density": 100,
+      "rate": 4.0,
+      "h2": 0.3,
+      "map": "uniform",
+      "error": 0.005,
+      "bias": 0.0
+    },
+    "weak_QTL": {
+      "N": 400,
+      "bulk": 20,
+      "depth": 40,
+      "density": 100,
+      "rate": 4.0,
+      "h2": 0.1,
+      "map": "uniform",
+      "error": 0.005,
+      "bias": 0.0
+    },
+    "strong_QTL": {
+      "N": 400,
+      "bulk": 20,
+      "depth": 40,
+      "density": 100,
+      "rate": 4.0,
+      "h2": 0.6,
+      "map": "uniform",
+      "error": 0.005,
+      "bias": 0.0
+    },
+    "small_bulk": {
+      "N": 400,
+      "bulk": 10,
+      "depth": 40,
+      "density": 100,
+      "rate": 4.0,
+      "h2": 0.3,
+      "map": "uniform",
+      "error": 0.005,
+      "bias": 0.0
+    },
+    "large_bulk": {
+      "N": 400,
+      "bulk": 50,
+      "depth": 40,
+      "density": 100,
+      "rate": 4.0,
+      "h2": 0.3,
+      "map": "uniform",
+      "error": 0.005,
+      "bias": 0.0
+    },
+    "low_depth": {
+      "N": 400,
+      "bulk": 20,
+      "depth": 15,
+      "density": 100,
+      "rate": 4.0,
+      "h2": 0.3,
+      "map": "uniform",
+      "error": 0.005,
+      "bias": 0.0
+    },
+    "high_depth": {
+      "N": 400,
+      "bulk": 20,
+      "depth": 80,
+      "density": 100,
+      "rate": 4.0,
+      "h2": 0.3,
+      "map": "uniform",
+      "error": 0.005,
+      "bias": 0.0
+    },
+    "low_recombination": {
+      "N": 400,
+      "bulk": 20,
+      "depth": 40,
+      "density": 100,
+      "rate": 0.5,
+      "h2": 0.3,
+      "map": "uniform",
+      "error": 0.005,
+      "bias": 0.0
+    },
+    "high_recombination": {
+      "N": 400,
+      "bulk": 20,
+      "depth": 40,
+      "density": 100,
+      "rate": 8.0,
+      "h2": 0.3,
+      "map": "uniform",
+      "error": 0.005,
+      "bias": 0.0
+    },
+    "heterogeneous_map": {
+      "N": 400,
+      "bulk": 20,
+      "depth": 40,
+      "density": 100,
+      "rate": 4.0,
+      "h2": 0.3,
+      "map": "heterogeneous",
+      "error": 0.005,
+      "bias": 0.0
+    },
+    "sparse_markers": {
+      "N": 400,
+      "bulk": 20,
+      "depth": 40,
+      "density": 10,
+      "rate": 4.0,
+      "h2": 0.3,
+      "map": "uniform",
+      "error": 0.005,
+      "bias": 0.0
+    },
+    "dense_markers": {
+      "N": 400,
+      "bulk": 20,
+      "depth": 40,
+      "density": 400,
+      "rate": 4.0,
+      "h2": 0.3,
+      "map": "uniform",
+      "error": 0.005,
+      "bias": 0.0
+    },
+    "differential_error": {
+      "N": 400,
+      "bulk": 20,
+      "depth": 40,
+      "density": 100,
+      "rate": 4.0,
+      "h2": 0.3,
+      "map": "uniform",
+      "error": 0.005,
+      "bias": 0.08
+    }
+  },
+  "interval": "union of physical support of windows above held-out chromosome-max null threshold",
+  "cutoff": "ceil((n_calibration+1)*0.95) order statistic; strict exceedance",
+  "limitations": [
+    "One chromosome, not genome-wide FWER",
+    "F2 additive single QTL only",
+    "Equal constant depth within each condition",
+    "Stylized genetic maps; no crossover interference",
+    "No read alignment or structural-variant simulation",
+    "Differential-error scenario assumes its artifact is represented in null calibration",
+    "Comparator scores are reimplementations, not official package executions"
+  ]
+}
