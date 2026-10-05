@@ -18,5 +18,9 @@
   "validation_date": "2026-10-05",
   "empirical_supported_export_matches": true,
   "data_layout_reverified": true,
-  "workbook_source_paths_updated": 6
+  "workbook_source_paths_updated": 6,
+  "raw_archives_verified": 2,
+  "raw_snp_records_verified": 13200000,
+  "raw_tsv_hashes_match_original_submission": true,
+  "raw_archive_parts_verified": 25
 }

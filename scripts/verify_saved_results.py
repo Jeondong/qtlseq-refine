@@ -4,6 +4,7 @@ import argparse,json
 import numpy as np
 import pandas as pd
 from sliding_window_analysis import scan
+from assemble_raw_data import assemble_archives
 
 ROOT=Path(__file__).resolve().parents[1]
 DATASETS=[('abci8_Chr11','Chr11','OsABCI8',17329608,17332992,'min'),
@@ -53,7 +54,9 @@ def summarize_empirical(root):
 
 def main():
     ap=argparse.ArgumentParser(description=__doc__);ap.add_argument('--root',type=Path,default=ROOT)
-    ap.add_argument('--output-dir',type=Path,default=Path('outputs/verification'));args=ap.parse_args()
+    ap.add_argument('--output-dir',type=Path,default=Path('outputs/verification'))
+    ap.add_argument('--verify-raw',action='store_true',help='Also verify the compressed and decompressed Data S3/S4 hashes and record counts.')
+    args=ap.parse_args()
     args.output_dir.mkdir(parents=True,exist_ok=True)
     report=verify_f2(args.root);emp,n,supported=summarize_empirical(args.root)
     expected=pd.read_csv(args.root/'data/supplementary/Supplementary_Data_S6/empirical_summary.tsv',sep='\t')
@@ -64,6 +67,7 @@ def main():
     supported.to_csv(args.output_dir/'empirical_supported_windows.tsv',sep='\t',index=False)
     emp.to_csv(args.output_dir/'empirical_summary.tsv',sep='\t',index=False)
     report.update(empirical_supported_windows_verified=n,empirical_settings_verified=len(emp),empirical_summary_matches=True,empirical_supported_export_matches=True)
+    if args.verify_raw:report.update(assemble_archives(args.root,args.output_dir/'raw_archives'))
     (args.output_dir/'verification.json').write_text(json.dumps(report,indent=2),encoding='utf-8')
     print(json.dumps(report,indent=2))
 

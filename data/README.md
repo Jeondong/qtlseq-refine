@@ -1,6 +1,6 @@
 # Data
 
-Latest supplementary data are indexed in **[supplementary/](supplementary/)**. Tables remain in [../tables/](../tables/).
+All Supplementary Data S1–S6, including the full raw simulated SNP records for S3/S4, are indexed in **[supplementary/](supplementary/)**. Tables remain in [../tables/](../tables/).
 
 The six Excel files in this directory are preserved original empirical files and form part of Supplementary Data S6:
 

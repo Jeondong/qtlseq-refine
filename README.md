@@ -20,7 +20,7 @@ python -m unittest discover -s tests -v
 python scripts/verify_saved_results.py
 ```
 
-The verifier reaggregates 364,000 F2 replicate-method records (26,000 evaluation populations), checks 1,274 summary values, and recalculates 16,875 supported empirical windows across 15 settings. It writes a report under `outputs/verification/`. The additional 26,000 null calibration populations are documented by the saved protocol; their individual draws were not retained. See `provenance/` for file hashes and validation results.
+The verifier reaggregates 364,000 F2 replicate-method records (26,000 evaluation populations), checks 1,274 summary values, and recalculates 16,875 supported empirical windows across 15 settings. It writes a report under `outputs/verification/`. The additional 26,000 null calibration populations are documented by the saved protocol; their individual draws were not retained. See `provenance/` for file hashes and validation results. Add `--verify-raw` to also decompress and verify Data S3/S4 against the published archive and TSV hashes.
 
 ## Files and supplementary numbering
 
@@ -30,7 +30,7 @@ Start at the [data index](data/README.md) or [supplementary data index](data/sup
 | --- | --- | --- |
 | `data/supplementary/Supplementary_Data_S1_threshold_sim.tsv` | 600 observed-percentile experiments, seed 42; 5,400 rows | Data S1 |
 | `data/supplementary/Supplementary_Data_S2_peakshift_sim.tsv` | 500 coordinate experiments, seed 2025; 2,500 rows | Data S2 |
-| Generated with `--raw-snps` below | Raw simulated SNP draws corresponding to S1 and S2 | Data S3 and S4 |
+| [Data S3](data/supplementary/Supplementary_Data_S3/) and [Data S4](data/supplementary/Supplementary_Data_S4/) | Raw simulated SNP draws corresponding to S1 and S2, in split XZ archives | Data S3 and S4 |
 | `data/supplementary/Supplementary_Data_S5/` | F2 protocol, thresholds, replicate records, full and selected summaries | Data S5 |
 | `data/` and `data/supplementary/Supplementary_Data_S6/` | Six original rice Excel files and verified summaries | Data S6 |
 | `tables/Supplementary_Tables.xlsx` and `tables/*.tsv` | Tables S1, S2, S3, S4, S5A and S5B | Tables S1–S5 |
@@ -38,7 +38,7 @@ Start at the [data index](data/README.md) or [supplementary data index](data/sup
 
 **Figure S1 is marker support; Figure S2 is population sensitivity.** The former `Figure_9_population_sensitivity` is now Figure S2. Publication exports retain their author-edited layout; the plotting script reproduces the reported quantities with potentially different typography/layout. Figures 5–7 are not regenerated here.
 
-Large raw Data S3/S4 gzip files remain in the manuscript submission package rather than being duplicated in Git. They are reproducible below and contain simulated SNPs, not raw sequencing reads or unfiltered empirical SNPs. “Table S5” and “Data S5” denote different supplementary items.
+All six supplementary datasets are available through the [supplementary data index](data/supplementary/README.md). Data S3/S4 are published as lossless split XZ archives; all parts are included in the repository and `python scripts/assemble_raw_data.py --extract` restores both TSV files under `outputs/raw_supplementary/`. Their decompressed TSV bytes are identical to those in the original submission gzip files. They contain simulated SNPs, not raw sequencing reads or unfiltered empirical SNPs. “Table S5” and “Data S5” denote different supplementary items.
 
 ## Descriptive simulations and figures
 
@@ -48,14 +48,14 @@ python scripts/peak_shift_sim.py --output-dir outputs/descriptive
 python scripts/plot_revision_figures.py --output-dir outputs/figures
 ```
 
-To also regenerate raw simulated SNP draws:
+To regenerate raw simulated SNP draws (the scripts export gzip; the published archives use XZ):
 
 ```bash
 python scripts/sim_threshold.py --raw-snps --output-dir outputs/descriptive
 python scripts/peak_shift_sim.py --raw-snps --output-dir outputs/descriptive
 ```
 
-Default seeds and replicate counts reproduce saved Data S1/S2 metrics. Gzip metadata and floating-point text formatting may differ. Raw exports round positions to one decimal place and ΔSNP-index to six decimal places, matching the submission format; use the seeded generator for full-precision metric reproduction.
+Default seeds and replicate counts reproduce saved Data S1/S2 metrics. Archive metadata and floating-point text formatting may differ when rerunning the generators. Raw exports round positions to one decimal place and ΔSNP-index to six decimal places, matching the submission format; use the seeded generator for full-precision metric reproduction.
 
 These experiments draw 12,000 SNPs over a 30 Mb chromosome with a signal centered at 15 Mb. Observed p95/p99 are percentiles of absolute values in each simulated chromosome, **not null-model significance thresholds**. Windows require two retained SNPs. Empirical and F2 support rules differ, as specified below.
 
