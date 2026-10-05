@@ -10,13 +10,15 @@
     "data/lesv_Chr11_p99_sliding_window_multi.xlsx": "57151c0f06ee6f9acd9d25a1f608ea4412aeb6840d24fe9e4fa30cb605b2b19f",
     "data/qHT1_Chr1_p99.xlsx": "b7f99d80d45f95ea9d6358d51b60b720eeea0d5a5ec5877426226e03baa75e1f",
     "data/qHT1_Chr1_p99_sliding_window_multi.xlsx": "994343eaba2f16045901c962441e19ae9a5caa59c391b5a0e473018a82206e78",
-    "results/descriptive/Supplementary_Data_S1_threshold_sim.tsv": "e0b8af2e1ef3a6a491937dfe4507d172064b65f4c1da9b57d9de96abc76e772a",
-    "results/descriptive/Supplementary_Data_S2_peakshift_sim.tsv": "4b0044a12f65490475d648893062f674ce50b9888bfd696d7eef889f3712eb76",
-    "results/empirical/empirical_summary.tsv": "27655c8103c75511da633fb9a2afed3388d2068e0b4de8678c145740f77cf50d",
-    "results/f2/benchmark_protocol.json": "04cb780d8e24c04f0751bdede96c37182c6814ddf94d03839c567ef9b1cdaab6",
-    "results/f2/benchmark_replicates.tsv.gz": "4787f14c1fa033064eddb4351cfd517d25dcfeb3faacde8dbffd7746a57ed17f",
-    "results/f2/benchmark_summary.tsv": "e2c2f562512ea8e5ec889463d2f1a6b537a8f845ae4e44ed941fd88ee64e183b",
-    "results/f2/benchmark_thresholds.tsv": "d97739adf57c6d03dab393fcaade97096bb81bedede465a5ddf15e230aeaeffb",
-    "results/f2/benchmark_verified_summary.tsv": "5b1c39691545d7cecc20fdee1eb3c9483e16e2ec5b6f83c1edbbcc19d674eeac"
-  }
+    "data/supplementary/Supplementary_Data_S1_threshold_sim.tsv": "e0b8af2e1ef3a6a491937dfe4507d172064b65f4c1da9b57d9de96abc76e772a",
+    "data/supplementary/Supplementary_Data_S2_peakshift_sim.tsv": "4b0044a12f65490475d648893062f674ce50b9888bfd696d7eef889f3712eb76",
+    "data/supplementary/Supplementary_Data_S6/empirical_summary.tsv": "27655c8103c75511da633fb9a2afed3388d2068e0b4de8678c145740f77cf50d",
+    "data/supplementary/Supplementary_Data_S5/benchmark_protocol.json": "04cb780d8e24c04f0751bdede96c37182c6814ddf94d03839c567ef9b1cdaab6",
+    "data/supplementary/Supplementary_Data_S5/benchmark_replicates.tsv.gz": "4787f14c1fa033064eddb4351cfd517d25dcfeb3faacde8dbffd7746a57ed17f",
+    "data/supplementary/Supplementary_Data_S5/benchmark_summary.tsv": "e2c2f562512ea8e5ec889463d2f1a6b537a8f845ae4e44ed941fd88ee64e183b",
+    "data/supplementary/Supplementary_Data_S5/benchmark_thresholds.tsv": "d97739adf57c6d03dab393fcaade97096bb81bedede465a5ddf15e230aeaeffb",
+    "data/supplementary/Supplementary_Data_S5/benchmark_verified_summary.tsv": "5b1c39691545d7cecc20fdee1eb3c9483e16e2ec5b6f83c1edbbcc19d674eeac",
+    "data/supplementary/Supplementary_Data_S6/empirical_supported_windows.tsv": "06182765d2e5c27cdd9bf90198421756eb40c79675cb221bb3dcc11b6bca2af1"
+  },
+  "data_layout_revision": "Supplementary result files moved from results/ to data/supplementary/; original empirical Excel files unchanged."
 }

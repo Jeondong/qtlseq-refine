@@ -23,8 +23,8 @@ def main():
     def save(fig,name):
         for ext in ['png','svg']:fig.savefig(out/f'{name}.{ext}',dpi=200,bbox_inches='tight',facecolor='white')
         plt.close(fig)
-    t=pd.read_csv(args.root/'results/descriptive/Supplementary_Data_S1_threshold_sim.tsv',sep='\t')
-    p=pd.read_csv(args.root/'results/descriptive/Supplementary_Data_S2_peakshift_sim.tsv',sep='\t')
+    t=pd.read_csv(args.root/'data/supplementary/Supplementary_Data_S1_threshold_sim.tsv',sep='\t')
+    p=pd.read_csv(args.root/'data/supplementary/Supplementary_Data_S2_peakshift_sim.tsv',sep='\t')
     fig,axes=plt.subplots(1,3,figsize=(10,3.4),sharey=True,layout='constrained');rng=np.random.RandomState(42)
     for _ in range(5):
         pos,val=make_chrom(rng)
@@ -65,8 +65,8 @@ def main():
     axes[2,1].plot(np.arange(5),reduction,'o-',c='#695394');axes[2,1].set(title='(F) Reduction in absolute median signed error',ylabel='Directional-bias reduction (Mb)')
     for ax in axes[1:].flat:ax.set_xticks(np.arange(5),[str(w) for w in scales]);ax.set_xlabel('Window size (Mb)')
     save(fig,'Figure_8_white')
-    summary=pd.read_csv(args.root/'results/f2/benchmark_verified_summary.tsv',sep='\t')
-    protocol=json.loads((args.root/'results/f2/benchmark_protocol.json').read_text());conditions=list(protocol['configs'])
+    summary=pd.read_csv(args.root/'data/supplementary/Supplementary_Data_S5/benchmark_verified_summary.tsv',sep='\t')
+    protocol=json.loads((args.root/'data/supplementary/Supplementary_Data_S5/benchmark_protocol.json').read_text());conditions=list(protocol['configs'])
     fig,axes=plt.subplots(1,4,figsize=(12,6.5),sharey=True,layout='constrained')
     metrics=[('coverage','(A) True-position inclusion'),('median_peak_error_mb','(B) Peak error (Mb)'),('median_called_width_mb','(C) Called width (Mb)'),('false_positive_rate','(D) Null detection')]
     for j,(metric,title) in enumerate(metrics):

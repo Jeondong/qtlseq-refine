@@ -11,7 +11,7 @@ DATASETS=[('abci8_Chr11','Chr11','OsABCI8',17329608,17332992,'min'),
           ('lesv_Chr11','Chr11','OsLESV',22175496,22178936,'max')]
 
 def verify_f2(root):
-    base=root/'results/f2';raw=pd.read_csv(base/'benchmark_replicates.tsv.gz',sep='\t',keep_default_na=False,na_values=[''])
+    base=root/'data/supplementary/Supplementary_Data_S5';raw=pd.read_csv(base/'benchmark_replicates.tsv.gz',sep='\t',keep_default_na=False,na_values=[''])
     saved=pd.read_csv(base/'benchmark_summary.tsv',sep='\t').set_index(['scenario','method'])
     selected=pd.read_csv(base/'benchmark_verified_summary.tsv',sep='\t').set_index(['scenario','method'])
     assert len(raw)==364000
@@ -31,7 +31,7 @@ def verify_f2(root):
     return dict(replicate_method_rows=len(raw),evaluation_populations=26000,calibration_populations=26000,summary_values_verified=checks,new_f2_populations_generated=0)
 
 def summarize_empirical(root):
-    rows=[];nchecked=0
+    rows=[];nchecked=0;supported=[]
     for stem,chrom,label,g1,g2,direction in DATASETS:
         inp=root/'data'/f'{stem}_p99.xlsx';data=pd.read_excel(inp).iloc[:,:2].dropna()
         regenerated=scan(inp,chrom);saved=pd.read_excel(root/'data'/f'{stem}_p99_sliding_window_multi.xlsx',sheet_name=None)
@@ -39,6 +39,7 @@ def summarize_empirical(root):
             allrows=saved[name];valid=allrows[(allrows['count']>0)&allrows.value_mean.notna()].sort_values('start').reset_index(drop=True)
             assert np.array_equal(calc[['start','end','mid','count']],valid[['start','end','mid','count']]),(label,name,'support')
             assert np.allclose(calc.value_mean,valid.value_mean,rtol=0,atol=1e-10),(label,name,'means')
+            export=calc.copy();export.insert(0,'window',name);export.insert(0,'dataset',label);supported.append(export)
             extreme=valid.value_mean.min() if direction=='min' else valid.value_mean.max()
             tied=valid[valid.value_mean==extreme];peak=tied.iloc[0]
             dist=lambda x:max(g1-x,0,x-g2)/1e6
@@ -48,17 +49,21 @@ def summarize_empirical(root):
                              peak_start_bp=int(peak.start),peak_center_bp=int(peak.mid),peak_snp_count=int(peak['count']),gene_start_bp=g1,gene_end_bp=g2,
                              start_to_gene_mb=dist(peak.start),center_to_gene_mb=dist(peak.mid)))
             nchecked+=len(valid)
-    return pd.DataFrame(rows),nchecked
+    return pd.DataFrame(rows),nchecked,pd.concat(supported,ignore_index=True)
 
 def main():
     ap=argparse.ArgumentParser(description=__doc__);ap.add_argument('--root',type=Path,default=ROOT)
     ap.add_argument('--output-dir',type=Path,default=Path('outputs/verification'));args=ap.parse_args()
     args.output_dir.mkdir(parents=True,exist_ok=True)
-    report=verify_f2(args.root);emp,n=summarize_empirical(args.root)
-    expected=pd.read_csv(args.root/'results/empirical/empirical_summary.tsv',sep='\t')
+    report=verify_f2(args.root);emp,n,supported=summarize_empirical(args.root)
+    expected=pd.read_csv(args.root/'data/supplementary/Supplementary_Data_S6/empirical_summary.tsv',sep='\t')
     pd.testing.assert_frame_equal(emp,expected,check_exact=False,rtol=1e-10,atol=1e-10)
+    expected_windows=pd.read_csv(args.root/'data/supplementary/Supplementary_Data_S6/empirical_supported_windows.tsv',sep='\t')
+    pd.testing.assert_frame_equal(supported,expected_windows,check_exact=False,rtol=1e-10,atol=1e-10)
+    assert supported['count'].gt(0).all() and supported.value_mean.notna().all()
+    supported.to_csv(args.output_dir/'empirical_supported_windows.tsv',sep='\t',index=False)
     emp.to_csv(args.output_dir/'empirical_summary.tsv',sep='\t',index=False)
-    report.update(empirical_supported_windows_verified=n,empirical_settings_verified=len(emp),empirical_summary_matches=True)
+    report.update(empirical_supported_windows_verified=n,empirical_settings_verified=len(emp),empirical_summary_matches=True,empirical_supported_export_matches=True)
     (args.output_dir/'verification.json').write_text(json.dumps(report,indent=2),encoding='utf-8')
     print(json.dumps(report,indent=2))
 

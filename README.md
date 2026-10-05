@@ -24,13 +24,15 @@ The verifier reaggregates 364,000 F2 replicate-method records (26,000 evaluation
 
 ## Files and supplementary numbering
 
+Start at the [data index](data/README.md) or [supplementary data index](data/supplementary/README.md). Saved supplementary results are now grouped under `data/supplementary/`; the eight files moved from `results/` retain their original contents.
+
 | Location | Contents | Supplement |
 | --- | --- | --- |
-| `results/descriptive/Supplementary_Data_S1_threshold_sim.tsv` | 600 observed-percentile experiments, seed 42; 5,400 rows | Data S1 |
-| `results/descriptive/Supplementary_Data_S2_peakshift_sim.tsv` | 500 coordinate experiments, seed 2025; 2,500 rows | Data S2 |
+| `data/supplementary/Supplementary_Data_S1_threshold_sim.tsv` | 600 observed-percentile experiments, seed 42; 5,400 rows | Data S1 |
+| `data/supplementary/Supplementary_Data_S2_peakshift_sim.tsv` | 500 coordinate experiments, seed 2025; 2,500 rows | Data S2 |
 | Generated with `--raw-snps` below | Raw simulated SNP draws corresponding to S1 and S2 | Data S3 and S4 |
-| `results/f2/` | F2 protocol, thresholds, replicate records, full and selected summaries | Data S5 |
-| `data/` and `results/empirical/` | Six original rice Excel files and verified summaries | Data S6 |
+| `data/supplementary/Supplementary_Data_S5/` | F2 protocol, thresholds, replicate records, full and selected summaries | Data S5 |
+| `data/` and `data/supplementary/Supplementary_Data_S6/` | Six original rice Excel files and verified summaries | Data S6 |
 | `tables/Supplementary_Tables.xlsx` and `tables/*.tsv` | Tables S1, S2, S3, S4, S5A and S5B | Tables S1–S5 |
 | `figures/` | Revised PNG/SVG exports for Figures 1, 3, 4, 8, S1 and S2 | See below |
 
@@ -85,7 +87,7 @@ The first two columns supply position in bp and retained ΔSNP-index. The same s
 | 100 kb | 5 kb | `0.1Mb_5Kb` |
 | 10 kb | 5 kb | `0.01Mb_5Kb` |
 
-Each TSV contains `chrom`, `start`, `end`, `mid`, `value_mean`, and `count`. Windows are half-open `[start, end)` and `mid = start + width/2`. The default requires one retained SNP (`--min-snps 1`); unsupported windows are omitted. Original Excel outputs sometimes encode empty windows as mean zero; verification excludes `count=0` rows.
+Each scan TSV contains `chrom`, `start`, `end`, `mid`, `value_mean`, and `count`. Windows are half-open `[start, end)` and `mid = start + width/2`. The default requires one retained SNP (`--min-snps 1`); unsupported windows are omitted. Original Excel outputs sometimes encode empty windows as mean zero; verification excludes `count=0` rows. The combined [supported-window export in Data S6](data/supplementary/Supplementary_Data_S6/empirical_supported_windows.tsv) adds `dataset` and `window` identifiers and preserves genuine zero means with positive SNP count. The verifier regenerates and checks all 16,875 rows.
 
 Filenames preserve the original `p99` labels. The retained inputs do not include all upstream data/code needed to independently reconstruct selection. This scan is not an automated iterative interval-selection algorithm.
 
@@ -95,7 +97,7 @@ Table S5B selects the global minimum over supplied OsABCI8/qHT1 inputs and globa
 
 ## F2 population benchmark
 
-Seed 20260914 is used for 13 controlled conditions, each with 2,000 null calibration, 1,000 independent null-test and 1,000 QTL-test populations (52,000 overall). The single-QTL F2 model uses 400 individuals and varies bulk size, depth, marker density, recombination map, effect size and error. These are sensitivity scenarios, not estimates fitted to rice data. Settings and limitations are in `results/f2/benchmark_protocol.json`.
+Seed 20260914 is used for 13 controlled conditions, each with 2,000 null calibration, 1,000 independent null-test and 1,000 QTL-test populations (52,000 overall). The single-QTL F2 model uses 400 individuals and varies bulk size, depth, marker density, recombination map, effect size and error. These are sensitivity scenarios, not estimates fitted to rice data. Settings and limitations are in `data/supplementary/Supplementary_Data_S5/benchmark_protocol.json`.
 
 Here p95/p99 are bulk-aware **null** cutoffs for individual absolute ΔSNP-index values. Window detection uses a separate held-out chromosome-maximum null threshold at nominal alpha 0.05, with strict exceedance. This concerns one chromosome, not genome-wide error. ALL/p95/p99 require ten retained SNPs; `p99_n1` is a one-SNP sensitivity analysis. Suffixes 2000/500/100 kb denote window width. The marker-fraction comparator uses the same p99 cutoff and is not PyBSASeq. The full summary preserves a reimplemented G-statistic comparator; no official comparator package execution is claimed.
 

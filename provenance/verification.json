@@ -15,5 +15,8 @@
   "python": "3.12.14",
   "numpy": "2.3.5",
   "pandas": "3.0.1",
-  "validation_date": "2026-10-05"
+  "validation_date": "2026-10-05",
+  "empirical_supported_export_matches": true,
+  "data_layout_reverified": true,
+  "workbook_source_paths_updated": 6
 }
